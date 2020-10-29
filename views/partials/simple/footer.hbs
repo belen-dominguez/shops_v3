@@ -1,0 +1,112 @@
+<div class="default-nav-footer-contact">
+  <div class="default-nav-footer-contact__content header--custom-background">
+    <div class="nav-bounds nav-bounds--contact">
+      <div class="default-nav-footer__brand-col header--custom-text">
+        {{#if logo}}
+        <a class="nav-default-header__logo" href="/" id="logo-wrapper">
+          <span class="nav-header__title-hidden">{{name}}</span>
+          <img class="nav-header__image" src="{{logo}}" alt="{{name}}" itemprop="logo" />
+        </a>
+        {{else}}
+        <h3 class="nav-footer-contact-title header--custom-text">
+          <a href="/">{{name}}</a>
+        </h3>
+        {{/if}}
+        {{#if logoCaption}}
+        <p class="default-nav-footer__logo-caption">{{{logoCaption}}}</p>
+        {{/if}}
+        <div class="default-nav-footer__social-media--responsive">
+          {{#each socialNetworks}}
+          <a href="{{url}}" target="_blank" class="header--custom-svg">
+            {{> (concat 'icons/social_networks/' (lookup . 'name'))}}
+          </a>
+          {{/each}}
+        </div>
+      </div>
+
+      <div class="default-nav-footer__categories-col header--custom-border">
+        {{#each menu}}
+        <span class="default-nav-footer__category">
+          <a href="{{url}}" data-id="{{id}}" class="header--custom-text">
+            {{name}}
+          </a>
+        </span>
+        {{/each}}
+      </div>
+
+      <div class="default-nav-footer__pages header--custom-border">
+        <span class="default-nav-footer__page">
+          <a href="{{home_url}}/como-comprar" class="header--custom-text">{{i18n.howBuy}}</a>
+        </span>
+      </div>
+
+      <div class="default-nav-footer__contact-col">
+        <div class="default-nav-footer__social-media">
+          {{#each socialNetworks}}
+          <a href="{{url}}" target="_blank" class="header--custom-svg">
+            {{> (concat 'icons/social_networks/' (lookup . 'name'))}}
+          </a>
+          {{/each}}
+        </div>
+        {{#if showContact}}
+        <ul class="default-nav-footer__contact header--custom-border">
+          {{#if showPhone}}
+          <li class="contact-phone-number">
+            <a class="header--custom-text" itemprop="telephone" href="tel:{{phone.raw}}" rel="nofollow">Tel:
+              {{phone.formatted}}</a>
+          </li>
+          {{/if}}
+          {{#if showEmail}}
+          <li class="contact-mail">
+            <a class="header--custom-text" itemprop="email" href="mailto:{{email}}" rel="nofollow">{{email}}</a>
+          </li>
+          {{/if}}
+          {{#if address}}
+          {{#with address}}
+          <li>
+            <a class="header--custom-text" itemprop="streetAddress">{{address}}</a>
+            <a class="header--custom-text" itemprop="addressLocality">{{city}}</a>
+            <a class="header--custom-text" itemprop="addressRegion">{{state}}</a>
+          </li>
+          {{/with}}
+          {{/if}}
+          <meta itemprop="contactType" content="customer service" />
+        </ul>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+</div>
+<footer role="contentinfo" class="default-nav-footer nav-footer header--custom-text header--custom-background">
+  <div class="nav-bounds nav-bounds--copyright">
+    <div class="nav-footer-primaryinfo">
+      <small class="nav-footer-copyright">
+        <div class="nav-footer-disclaimer">
+          <div>
+            <div class="nav-footer-about">
+              <p class="header--custom-text">{{i18n.powered_by}}</p>
+              {{#if linkToLGPD}}
+                <a href="{{linkToLGPD.href}}" class="header--custom-text">{{linkToLGPD.label}}</a>
+              {{/if}}
+            </div>
+            {{#if showBusinessData}}
+              {{#with fiscalData}}
+                <div class="nav-footer-fiscal-data">
+                  <p class="nav-footer-fiscal-data__name">{{legal_name}}</p>
+                  <p class="nav-footer-fiscal-data__id">{{legal_doc}}</p>
+                </div>
+              {{/with}}
+            {{/if}}
+          </div>
+          {{#if showQrData}}
+            {{#with fiscalData}}
+              <a href={{qr_link}} target="_F960AFIPInfo">
+                <img class="nav-footer-afip-img" src={{qr_img}} alt="Data fiscal" />
+              </a>
+            {{/with}}
+          {{/if}}
+        </div>
+      </small>
+    </div>
+  </div>
+</footer>
