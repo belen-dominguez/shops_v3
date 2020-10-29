@@ -2,6 +2,40 @@
   {{#if flash.enabled}}
     {{> components/flash}}
   {{/if}}
+  <div id="countdown" >
+    <div id="countdown-container" >
+      <div id="countdown-section__one" class="countdown-one noDisplay">
+        <i class="fas fa-fire"></i>
+        <span>Hot Sale!</span>
+      </div>
+      
+      <div id="countdown-section__two" class="countdown-two noDisplay">
+
+        <p class="countdown-items">
+          <span id="countdown-day" class="countdown-item__details"></span>
+          <span class="countdown-item__info"> Dias </span>
+        </p>
+
+        <p class="countdown-items">
+          <span id="countdown-hours" class="countdown-item__details"></span>
+          <span class="countdown-item__info">Horas</span>
+        </p>
+        <span>:</span>
+        <p class="countdown-items">
+          <span id="countdown-minutes" class="countdown-item__details"></span>
+          <span class="countdown-item__info">Minutos</span>
+        </p>
+        <span>:</span>
+        <p class="countdown-items">
+          <span id="countdown-seconds" class="countdown-item__details"></span>
+          <span class="countdown-item__info">Segundos</span>
+        </p>
+        
+        
+      
+      </div>
+    </div>
+  </div>
   <header role="banner" class="nav-default-header header--custom-background" itemtype="http://schema.org/Store" itemid="#this" itemscope="">
 
     <div class="nav-default-header__bounds">
@@ -77,7 +111,7 @@
             <div class="nav-default-list--vertical__subitem-container" data-toggle="mobile-{{@index}}" >
               {{#each this.nodes}}
                 <li class="nav-default-list--vertical__subitem">
-                  <a href="{{this.url}}" class="header--custom-text">{{this.name}}</a>
+                  <a href="{{this.url}}{{../name}}" class="header--custom-text">{{this.name}}</a>
                   {{#if this.nodes}}
                     <div>
                       <input type="checkbox" data-js="categories-toggle" id="mobile-attr-{{@../index}}-{{@index}}" name="nav-tools-header__menu-switch">
@@ -139,7 +173,19 @@
           {{/if}}
         </div>
       </nav>
+       <div class="nav-icons-social">
+          <p>Seguinos</p>
+          <div class="">
+            <a href="facebook.com" target="_blank"> 
+              {{> icons/social_networks/facebook}} 
+            </a>
+            <a href="https://www.instagram.com/tiendaMOWonline/" target="_blank">
+              {{> icons/social_networks/instagram}} 
+            </a>
+          </div>
+       </div>
     </div>
+    
 
     <!-- Popover -->
     <div itemscope itemtype="http://schema.org/SiteNavigationElement" id="popover-menu" class="header--custom-background">
@@ -154,7 +200,8 @@
             {{#each this.nodes}}
             <div class="nav-default-list--horizontal__subitem">
               <li class="header--custom-text">
-                <a href="{{this.url}}">{{this.name}}</a>
+                <a href="{{this.url}}{{../name}}">{{this.name}}</a>
+                <a href="{{this.url}}{{../name}}"><img style="width: 100px; height: 130px" src="https://i-techno.com.ar/templates/rt_epsilon/images/mow/{{this.name}}-{{../name}}.jpg" alt=""></a>
               </li>
               <div class="nav-default-list--horizontal__attr-container">
                 {{#each this.nodes}}
