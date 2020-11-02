@@ -57,6 +57,11 @@
             </a>
           </li>
         {{/each}}
+      
+
+        
+        
+        <div id="custom-menu" class="nav-default-list"></div>
 
         {{#if sale.text}}
           <li class="nav-default-list__item nav-default__sale-link" id="nav-default__sale-link">
@@ -191,8 +196,9 @@
     <div itemscope itemtype="http://schema.org/SiteNavigationElement" id="popover-menu" class="header--custom-background">
       <!-- Categories -->
       <div class="nav-bounds nav-default-desktop-categories-popover">
+          
         {{#each menu}}
-          <div class="nav-default-list--horizontal__item" data-toggle="{{this.name}}-{{@index}}">
+          <div class="nav-default-list--horizontal__item" id="{{this.name}}"  data-toggle="{{this.name}}-{{@index}}" >
             <li class="nav-default-list--horizontal__category header--custom-text">
               <a href="{{this.url}}">{{this.name}}</a>
               <hr class="nav-default-list--vertical__hr header--custom-border" />
@@ -214,6 +220,7 @@
             {{/each}}
           </div>
         {{/each}}
+        {{!-- <div id="custom-children" class="nav-default-list--horizontal__item" data-toggle="{{this.name}}-{{@index}}"></div> --}}
       </div>
       <!-- See more -->
       <div class="nav-bounds nav-default-desktop-see-more-popover" id="nav-popover-list">

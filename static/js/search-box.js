@@ -1,6 +1,7 @@
+var setLocationValue;
 !(function () {
 
-    var setLocationValue = function(url) {
+    setLocationValue = function(url) {
         window.location = "/" + url;
     };
 

@@ -1,5 +1,9 @@
 // Menu actions
 (function(){
+
+
+
+
   var displayHide = "none";
   var displayShow = "block";
   var displayShowFlex = "flex";
@@ -16,6 +20,10 @@
     listItemArray[elementIndex].style.visibility = "visible";
     listItemArray[elementIndex].style.opacity = "1";
   }
+
+
+
+
   function toggle() {
     var body = document.body;
     var responsiveMenu = document.getElementById("responsive-menu");
@@ -83,6 +91,7 @@
     }
   }
 
+ 
   // Popover methods
   function showPopover() {
     navPopover.style.display = displayShow;
@@ -92,6 +101,9 @@
     navPopover.style.display = displayHide;
   }
 
+
+
+
   function cleanPopoverData() {
     var popoverDataNodes = document.getElementsByClassName("nav-default-list--horizontal__item");
     var arrPopoverData = [].slice.call(popoverDataNodes);
@@ -100,39 +112,107 @@
     });
   }
 
-  function setPopoverData(item, popoverSeeMoreCategories) {
-    var popoverCategories = document.querySelectorAll('[data-toggle="' + item.dataset.js + '"]');
-    if (item.id === "nav-default__see-more") {
-      for (var e = 0; e < popoverSeeMoreCategories.length; e++) {
-        for (var j = 0; j < navPopoverListChildren.length; j++) {
-          if (navPopoverListChildren[j].textContent.replace(/\s/g, '').indexOf(popoverSeeMoreCategories[e].replace(/\s/g, '')) !== -1) {
-            navPopoverListChildren[j].setAttribute('style', 'display: block !important');
+
+  
+
+//   function setPopoverData(item, popoverSeeMoreCategories) {
+// //console.log(item)
+//     // var popoverCategories = document.querySelectorAll('[data-toggle="' + item.dataset.js + '"]');
+//     var popoverCategories = document.getElementsByClassName('nav-default-list--horizontal__item');
+//     console.log(popoverCategories)
+//     //console.log(navPopoverListChildren)
+    
+
+//     if (item.id === "nav-default__see-more") {
+//       for (var e = 0; e < popoverSeeMoreCategories.length; e++) {
+//         for (var j = 0; j < navPopoverListChildren.length; j++) {
+//           if (navPopoverListChildren[j].textContent.replace(/\s/g, '').indexOf(popoverSeeMoreCategories[e].replace(/\s/g, '')) !== -1) {
+//             navPopoverListChildren[j].setAttribute('style', 'display: block !important');
+//           }
+//         }
+//       }
+//     }
+//     if (popoverCategories.length) {
+//       popoverCategories[0].style.display = displayShowFlex;
+//     }
+//   }
+  
+
+
+function setPopoverData(item, popoverSeeMoreCategories) {
+ //console.log(item)
+      //var popoverCategories = document.querySelectorAll('[data-toggle="' + item.dataset.js + '"]');
+      //console.log(item.dataset)
+      var popoverCategories = document.getElementById(`${item.innerText}`);
+      
+      
+      if (item.id === "nav-default__see-more") {
+          for (var e = 0; e < popoverSeeMoreCategories.length; e++) {
+            for (var j = 0; j < navPopoverListChildren.length; j++) {
+              if (navPopoverListChildren[j].textContent.replace(/\s/g, '').indexOf(popoverSeeMoreCategories[e].replace(/\s/g, '')) !== -1) {
+                navPopoverListChildren[j].setAttribute('style', 'display: block !important');
+              }
+            }
           }
+        }
+       
+       // item.style.display = displayShowFlex;
+      // for(let i= 0; i < popoverCategories.length; i++){
+
+      //   // if (popoverCategories[i].length) {
+      //   // }
+
+      // }
+      //console.log(popoverCategories)
+      
+       popoverCategories.style.display = displayShowFlex; //aca accede a ese item 0
+      // if (popoverCategories.length) {// esto me entrega un nodelist con 1 solo item index 0
+      // }
+  
+    }
+
+  
+  // function hoverStylesHandler(item) {
+   
+  //   for (var i = 0; i < navListChildren.length; i++) {
+  //     navListChildren[i].style.boxShadow = 'none';
+  //   }
+  //   if (item && item.getAttribute('has-childs') !== '[]') {
+      
+  //     var popoverCategories = document.querySelectorAll('[data-toggle="' + item.dataset.js + '"]');
+     
+  //     var customTextColor = getComputedStyle(document.querySelector("#nav-list > li:nth-child(2) > a > span")).color;
+  //     if ((popoverCategories[0] || (item.id === "nav-default__see-more") || item.getAttribute('data-js') === 'how-buy__button')) {
+  //       item.style.boxShadow = 'inset 0 -2px 0 ' + customTextColor;
+  //     }
+  //   }
+  // }
+  function hoverStylesHandler(item) {
+   
+    for (var i = 0; i < navListChildren.length; i++) {
+      navListChildren[i].style.boxShadow = 'none';
+      
+      if (navListChildren[i] && (navListChildren[i].getAttribute('has-childs') !== '[]' ||
+      navListChildren[i].getAttribute('has-childs') !== undefined)) {
+        
+        var popoverCategories = document.querySelectorAll('[data-toggle="' + item.dataset.js + '"]');
+       
+        var customTextColor = getComputedStyle(document.querySelector("#nav-list > li:nth-child(2) > a > span")).color;
+
+        if ((popoverCategories[0] || (item.id === "nav-default__see-more") || navListChildren[i].getAttribute('data-js') === 'how-buy__button')) {
+          item.style.boxShadow = 'inset 0 -2px 0 ' + customTextColor;
         }
       }
     }
-    if (popoverCategories.length) {
-      popoverCategories[0].style.display = displayShowFlex;
-    }
   }
 
-  function hoverStylesHandler(item) {
-    for (var i = 0; i < navListChildren.length; i++) {
-      navListChildren[i].style.boxShadow = 'none';
-    }
-    if (item && item.getAttribute('has-childs') !== '[]') {
-      var popoverCategories = document.querySelectorAll('[data-toggle="' + item.dataset.js + '"]');
-      var customTextColor = getComputedStyle(document.querySelector("#nav-list > li:nth-child(2) > a > span")).color;
-      if ((popoverCategories[0] || (item.id === "nav-default__see-more") || item.getAttribute('data-js') === 'how-buy__button')) {
-        item.style.boxShadow = 'inset 0 -2px 0 ' + customTextColor;
-      }
-    }
-  }
+  
 
   function popoverHandler(popoverSeeMoreCategories){
     var navListArray = [].slice.call(navList.children);
     navListArray.forEach(function (item) {
       item.addEventListener("mouseover", (function () {
+     
         cleanPopoverData();
         showPopover();
         setPopoverData(this, popoverSeeMoreCategories);
@@ -205,4 +285,7 @@
   });
   showMenuItems();
 
+
+
+  
 })();

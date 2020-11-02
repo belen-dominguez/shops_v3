@@ -749,6 +749,14 @@ a:hover {
     fill: #fca301 !important;
 }
 
+/*menu subitems*/
+.sub-item-menu {
+    width: 90%;
+    display: flex;
+}
+.sub-item-menu_children {
+    margin: 1rem
+}
 
 /* INsta & campaing*/
 .noDisplay {
@@ -757,6 +765,9 @@ a:hover {
 
 main {
     position: relative;
+}
+[role=main], body, html {
+    height: inherit;
 }
 /* .no-js #loader { display: none;  }
 .js #loader { display: block; position: absolute; left: 100px; top: 0; } */
@@ -770,14 +781,6 @@ main {
     background:url('https://middesign.com.ar/wp-content/shops-prueba/loader.gif') center no-repeat #fff;
 }
 
-/* @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-.hide-loader{
-display:none;
-} */
 
 /*Home Footer*/
 #home-footer {

@@ -1,17 +1,15 @@
 
+
 function setVisible(selector, visible) {
   document.querySelector(selector).style.display = visible ? 'block' : 'none';
 }
 
-// if(document.location.pathname === "/"){
-//   console.log("1")
-//   setVisible('.se-pre-con', false);
-// }
+
 
 function onReady(callback) {
  
   
-    var intervalId = window.setInterval(function() {
+    let intervalId = window.setInterval(function() {
       
        if (document.getElementsByTagName('body')[0] !== undefined) {
       //  if (document.getElementsByClassName('ml-main')[0] !== undefined) {
@@ -32,9 +30,6 @@ function onReady(callback) {
 
 
 
-
-
-console.log("7")
 
 // const buscarHTML = () => {
 
@@ -115,21 +110,17 @@ if(document.location.pathname === "/about-us"){
 
   const customURL = "https://middesign.com.ar/wp-content/shops-prueba/algo.html"
 
-  $.ajax({
-    type: "GET",
-    url: customURL,
-    crossOrigin: true,
-    //beforeSend: function(  ) {
-      //mainSection.appendChild(loaderDiv);  
-      
-    //},
-    success: function (customURL) {
-  
-    $("main").html(customURL);
-    //loaderDiv.classList.add('noDisplay')
-    return false;
-  },
-});
+    $.ajax({
+      type: "GET",
+      url: customURL,
+      crossOrigin: true,
+      success: function (customURL) { 
+    
+      $("main").html(customURL);
+
+      return false;
+    },
+  });
 }
 
 
@@ -194,11 +185,4 @@ let customURL = `https://middesign.com.ar/wp-content/shops-prueba/${location}.ht
 }
 
 */
-
-
-
-
-
-
-
 
